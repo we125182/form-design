@@ -95,6 +95,8 @@ export default {
     right: 0;
     content: '从左侧拖拽组件到此处';
     color: #ccc;
+    font-size: 14px;
+    text-align: center;
   }
   .target-ghost {
     background: #F56C6C;

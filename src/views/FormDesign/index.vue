@@ -51,7 +51,6 @@ export default {
   .drag-item {
     padding: 8px;
     cursor: move;
-    // background-color: yellowgreen;
     font-size: 12px;
     display: block;
     width: 48%;

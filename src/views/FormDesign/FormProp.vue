@@ -57,11 +57,9 @@ export default {
 
 <style lang="scss">
 .form-prop {
-  .el-form--label-top .el-form-item__label {
-    padding-bottom: 0;
-  }
   .el-form-item__label {
     font-weight: 500;
+    padding-bottom: 0 !important;
   }
 }
 </style>
