@@ -2,7 +2,18 @@
   <div class="drag-form-item" @click="$emit('click')">
     <i class="iconfont icon-move"></i>
     <el-form-item :label="label">
-      <component :is="name" v-bind="props" v-model="form[prop]"></component>
+      <component :is="name" v-bind="props" v-model="form[prop]">
+        <template v-if="extra">
+          <component
+            :is="extra.name"
+            v-for="option in extra.options"
+            :key="option.value"
+            v-bind="option"
+          >
+            {{option.label}}
+          </component>
+        </template>
+      </component>
     </el-form-item>
     <span class="iconfont">
       <i class="el-icon-document-copy" @click="handleCopy"></i>
@@ -29,6 +40,10 @@ export default {
     props: {
       type: Object,
       required: true
+    },
+    extra: {
+      type: Object,
+      default: () => ({})
     }
   },
   data() {

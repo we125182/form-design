@@ -19,12 +19,35 @@
         <el-option v-for="option in item.options" :key="option" :value="option"></el-option>
       </component>
     </el-form-item>
+    <el-form-item v-if="form.extra" label="选项">
+      <draggable
+        :group="{name: 'options'}"
+        ghost-class="ghost-options"
+        tag="ul"
+        :list="form.extra.options"
+        handle=".el-icon-rank"
+      >
+        <custom-option
+          v-for="(option, index) in form.extra.options"
+          :key="index"
+          :value="option"
+          @delete="handleOptionDelete(index)"
+        ></custom-option>
+        <el-button type="text" icon="el-icon-plus" @click="addOption">添加选项</el-button>
+      </draggable>
+    </el-form-item>
   </el-form>
 </template>
 
 <script>
 import { componentProps, EventName } from '@/utils'
+import draggable from 'vuedraggable'
+import CustomOption from '@/components/CustomOption'
 export default {
+  components: {
+    draggable,
+    CustomOption
+  },
   data() {
     return {
       props: [],
@@ -44,6 +67,15 @@ export default {
       this.props = componentProps[component.name]
       this.form = component
       console.log(this.form)
+    },
+    handleOptionDelete(index) {
+      this.form.extra.options.splice(index, 1)
+    },
+    addOption() {
+      this.form.extra.options.push({
+        label: '',
+        value: ''
+      })
     }
   }
 }
@@ -57,6 +89,9 @@ export default {
   }
   .el-select {
     width: 100%;
+  }
+  .ghost-options {
+    background-color: rgba(172, 225, 250, 0.28);
   }
 }
 </style>

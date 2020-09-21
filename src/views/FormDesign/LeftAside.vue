@@ -29,13 +29,7 @@ export default {
   methods: {
     handleClone(component) {
       const copyComponent = cloneDeep(component)
-      const { label, name, props } = copyComponent
-      return {
-        name,
-        prop: uniqueId(name),
-        label,
-        props
-      }
+      return Object.assign(copyComponent, { prop: uniqueId(copyComponent.name) })
     }
   }
 }

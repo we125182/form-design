@@ -26,6 +26,7 @@ export default {
 .right-aside {
   width: 270px;
   box-shadow: -5px 0px 5px -5px black;
+  overflow: auto;
   .el-tabs__nav {
     width: 100%;
   }
