@@ -1,54 +1,36 @@
 <template>
   <div class="form-design">
-    <div class="left-aside">
-      <draggable
-        tag="ul"
-        :list="list1"
-        v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
-      >
-        <li class="drag-item" v-for="item in list1" :key="item.id">{{ item.name }}</li>
-      </draggable>
+    <left-aside :components="components"></left-aside>
+    <div class="content">
+      <form-container :components="formItems"></form-container>
     </div>
-    <div class="content" group="people">
-      <draggable
-        tag="ul"
-        :list="list1"
-        v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
-      >
-        <div class="drag-item" v-for="item in list1" :key="item.id">{{ item.name }}</div>
-      </draggable>
-    </div>
-    <div class="right-aside">右侧列表</div>
+    <right-aside></right-aside>
   </div>
 </template>
 
 <script>
-import draggable from 'vuedraggable'
+import LeftAside from './LeftAside'
+import RightAside from './RightAside'
+import FormContainer from './FormContainer'
+import { components } from '@/utils'
 export default {
   components: {
-    draggable
+    LeftAside,
+    RightAside,
+    FormContainer
   },
-  data () {
+  data() {
     return {
-      list1: [
-        { name: 'John', id: 1 },
-        { name: 'Joao', id: 2 },
-        { name: 'Jean', id: 3 },
-        { name: 'Gerard', id: 4 }
-      ],
-      list2: [
-        { name: 'John', id: 1 },
-        { name: 'Joao', id: 2 },
-        { name: 'Jean', id: 3 },
-        { name: 'Gerard', id: 4 }
+      components,
+      formItems: [
       ]
     }
   },
   methods: {
-    handleMove () {
+    handleMove() {
       return true
     },
-    forceFallback () {
+    forceFallback() {
       return true
     }
   }
@@ -68,6 +50,7 @@ export default {
 
   .drag-item {
     padding: 8px;
+    cursor: move;
     // background-color: yellowgreen;
     font-size: 12px;
     display: block;
@@ -85,23 +68,13 @@ export default {
   }
 
   .content {
-    // flex: 1;
-    width: 250px;
+    flex: 1;
     margin: 10px;
     border: 1px dashed #cccccc;
   }
 
-  .right-aside {
-    width: 250px;
-    padding: 10px;
-    box-shadow: -5px 0px 5px -5px black;
+  .drag-container, .transition-group {
+    height: 100%;
   }
-
-.target-ghost {
-  height: 3px;
-  padding: 0;
-  background-color: red;
-  overflow: hidden;
-}
 }
 </style>
