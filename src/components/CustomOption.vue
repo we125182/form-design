@@ -29,9 +29,6 @@ export default {
   align-items: center;
   padding: 2px 0;
   margin-bottom: 8px;
-  &:hover {
-    // background-color: rgba(172, 225, 250, 0.28);
-  }
   i {
     font-size: 20px;
     margin-left: 4px;

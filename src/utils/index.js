@@ -50,8 +50,18 @@ export const components = [
       ]
     }
   },
-  { label: '日期选择器', name: 'ElDatePicker' },
-  { label: '上传', name: 'ElUpload' }
+  {
+    label: '日期选择器',
+    name: 'ElDatePicker',
+    props: {
+      type: 'date',
+      placeholder: '请选择',
+      startPlaceholder: '开始日期',
+      endPlaceholder: '结束日期',
+      clearable: true,
+      valueFormat: 'yyyy-MM-dd'
+    }
+  }
 ]
 
 export const componentProps = {
@@ -109,7 +119,31 @@ export const componentProps = {
     }
   ],
   ElRadioGroup: [],
-  ElCheckboxGroup: []
+  ElCheckboxGroup: [],
+  ElDatePicker: [
+    {
+      attr: 'type',
+      label: '类型',
+      options: [
+        'date',
+        'daterange'
+      ],
+      component: 'ElSelect'
+    },
+    {
+      attr: 'placeholder',
+      label: '占位文本'
+    },
+    {
+      attr: 'valueFormat',
+      label: '格式'
+    },
+    {
+      attr: 'clearable',
+      label: '是否可清空',
+      component: 'ElSwitch'
+    }
+  ]
 }
 
 export const EventName = {
