@@ -27,7 +27,17 @@ export const components = [
       ]
     }
   },
-  { label: '单选框', name: 'ElRadio' },
+  {
+    label: '单选框组',
+    name: 'ElRadioGroup',
+    extra: {
+      name: 'ElRadio',
+      options: [
+        { label: '选项1', value: 'option1' },
+        { label: '选项2', value: 'option2' }
+      ]
+    }
+  },
   { label: '多选框', name: 'ElCheckbox' },
   { label: '日期选择器', name: 'ElDatePicker' },
   { label: '上传', name: 'ElUpload' }
@@ -94,7 +104,8 @@ export const componentProps = {
       default: false,
       component: 'ElSwitch'
     }
-  ]
+  ],
+  ElRadioGroup: []
 }
 
 export const EventName = {

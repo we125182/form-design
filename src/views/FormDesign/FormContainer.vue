@@ -52,8 +52,8 @@ export default {
   },
   methods: {
     setActiveComponent(component) {
-      console.log(component)
       this.activeComponent = component
+      console.log(this.formItems)
       this.$event.$emit(EventName.activeComponent, this.activeComponent)
     },
     handleCopy(component, index) {
@@ -67,7 +67,9 @@ export default {
     },
     handleDelete(index) {
       const length = this.formItems.length
-      if (index === length - 1) {
+      if (length === 1) {
+        this.setActiveComponent({})
+      } else if (index === length - 1) {
         this.setActiveComponent(this.formItems[index - 1])
       } else {
         this.setActiveComponent(this.formItems[index + 1])

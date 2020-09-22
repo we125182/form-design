@@ -39,7 +39,7 @@ export default {
     },
     props: {
       type: Object,
-      required: true
+      default: () => ({})
     },
     extra: {
       type: Object,

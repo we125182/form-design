@@ -33,8 +33,8 @@
           :value="option"
           @delete="handleOptionDelete(index)"
         ></custom-option>
-        <el-button type="text" icon="el-icon-plus" @click="addOption">添加选项</el-button>
       </draggable>
+      <el-button type="text" icon="el-icon-plus" @click="addOption">添加选项</el-button>
     </el-form-item>
   </el-form>
 </template>
@@ -66,7 +66,6 @@ export default {
     initForm(component) {
       this.props = componentProps[component.name]
       this.form = component
-      console.log(this.form)
     },
     handleOptionDelete(index) {
       this.form.extra.options.splice(index, 1)
