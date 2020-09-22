@@ -38,7 +38,18 @@ export const components = [
       ]
     }
   },
-  { label: '多选框', name: 'ElCheckbox' },
+  {
+    label: '多选框组',
+    name: 'ElCheckboxGroup',
+    value: [],
+    extra: {
+      name: 'ElCheckbox',
+      options: [
+        { label: '选项1', value: 'option1' },
+        { label: '选项2', value: 'option2' }
+      ]
+    }
+  },
   { label: '日期选择器', name: 'ElDatePicker' },
   { label: '上传', name: 'ElUpload' }
 ]
@@ -47,7 +58,6 @@ export const componentProps = {
   ElInput: [
     {
       attr: 'type',
-      default: 'text',
       label: '类型',
       options: [
         'text',
@@ -58,27 +68,23 @@ export const componentProps = {
     },
     {
       attr: 'placeholder',
-      label: '占位文本',
-      default: '请输入'
+      label: '占位文本'
     },
     {
       attr: 'clearable',
       label: '是否可清空',
-      default: false,
       component: 'ElSwitch'
     },
     {
       attr: 'disabled',
       label: '是否禁用',
-      default: false,
       component: 'ElSwitch'
     }
   ],
   ElSelect: [
     {
       attr: 'placeholder',
-      label: '占位文本',
-      default: '请输入'
+      label: '占位文本'
     },
     {
       attr: 'multiple',
@@ -89,23 +95,21 @@ export const componentProps = {
     {
       attr: 'filterable',
       label: '是否可搜索',
-      default: false,
       component: 'ElSwitch'
     },
     {
       attr: 'clearable',
       label: '是否可清除',
-      default: false,
       component: 'ElSwitch'
     },
     {
       attr: 'disabled',
       label: '是否禁用',
-      default: false,
       component: 'ElSwitch'
     }
   ],
-  ElRadioGroup: []
+  ElRadioGroup: [],
+  ElCheckboxGroup: []
 }
 
 export const EventName = {

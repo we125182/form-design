@@ -44,12 +44,20 @@ export default {
     extra: {
       type: Object,
       default: () => ({})
+    },
+    value: {
+      type: [Object, Array, String],
+      default: ''
     }
   },
   data() {
     return {
       form: {}
     }
+  },
+  created() {
+    this.$set(this.form, this.prop, this.value)
+    console.log(this.form)
   },
   methods: {
     handleCopy() {

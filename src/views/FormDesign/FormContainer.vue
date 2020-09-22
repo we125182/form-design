@@ -53,7 +53,6 @@ export default {
   methods: {
     setActiveComponent(component) {
       this.activeComponent = component
-      console.log(this.formItems)
       this.$event.$emit(EventName.activeComponent, this.activeComponent)
     },
     handleCopy(component, index) {

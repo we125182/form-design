@@ -29,6 +29,7 @@ export default {
   methods: {
     handleClone(component) {
       const copyComponent = cloneDeep(component)
+      console.log(copyComponent)
       return Object.assign(copyComponent, { prop: uniqueId(copyComponent.name) })
     }
   }
