@@ -1,52 +1,57 @@
 <template>
-  <draggable
-    class="left-aside"
-    tag="div"
-    :list="components"
-    :group="{ name:'people', pull:'clone', put:false}"
-    :sort="false"
-    :clone="handleClone"
-    ghost-class="ghost"
-  >
-    <el-button plain v-for="component in components" :key="component.name">{{ component.label }}</el-button>
-  </draggable>
+  <el-collapse v-model="activeCollapse" class="left-aside">
+    <el-collapse-item
+      v-for="componentPanel in componentPanelList"
+      :key="componentPanel.name"
+      :name="componentPanel.name"
+      :title="componentPanel.title"
+    >
+      <component-panel :components="componentPanel.components"></component-panel>
+    </el-collapse-item>
+  </el-collapse>
 </template>
 
 <script>
-import draggable from 'vuedraggable'
-import { uniqueId, cloneDeep } from 'lodash-es'
+import { componentPanelList } from '@/utils'
+import ComponentPanel from './ComponentPanel'
 
 export default {
   components: {
-    draggable
+    ComponentPanel
   },
-  props: {
-    components: {
-      type: Array,
-      required: true
+  data() {
+    return {
+      componentPanelList,
+      activeCollapse: []
     }
+  },
+  created() {
+    this.activeCollapse = this.componentPanelList.map(item => item.name)
   },
   methods: {
-    handleClone(component) {
-      const copyComponent = cloneDeep(component)
-      console.log(copyComponent)
-      return Object.assign(copyComponent, { prop: uniqueId(copyComponent.name) })
-    }
   }
 }
 </script>
 
 <style lang="scss">
 .left-aside {
+  padding: 0 10px 10px;
+  background-color: #fff;
   .el-button {
     width: 120px;
-    margin-top: 10px;
+    margin-bottom: 10px;
   }
   .el-button + .el-button {
     margin-left: 0;
   }
   .el-button:nth-child(odd) {
     margin-right: 10px;
+  }
+  .el-collapse-item__content {
+    padding-bottom: 0;
+  }
+  .el-collapse-item__header {
+    font-size: 14px;
   }
 }
 </style>

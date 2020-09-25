@@ -81,7 +81,8 @@ export default {
 
 <style lang="scss">
 .form-container {
-  height: 100%;
+  height: calc(100% - 50px);
+  border: 1px dashed #cccccc;
   .drag-container {
     height: 100%;
   }

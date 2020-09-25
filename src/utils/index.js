@@ -1,4 +1,4 @@
-export const components = [
+export const baseComponents = [
   {
     label: '输入框',
     name: 'ElInput',
@@ -61,6 +61,14 @@ export const components = [
       clearable: true,
       valueFormat: 'yyyy-MM-dd'
     }
+  }
+]
+
+export const componentPanelList = [
+  {
+    title: '基础组件',
+    name: 'baseComponents',
+    components: baseComponents
   }
 ]
 

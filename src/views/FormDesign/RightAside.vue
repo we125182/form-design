@@ -27,6 +27,8 @@ export default {
   width: 270px;
   box-shadow: -5px 0px 5px -5px black;
   overflow: auto;
+  background-color: #fff;
+  border-top: 1px solid #EBEEF5;
   .el-tabs__nav {
     width: 100%;
   }
@@ -34,6 +36,8 @@ export default {
     width: 50%;
     padding: 0;
     text-align: center;
+    height: 50px;
+    line-height: 50px;
   }
   .el-tab-pane {
     padding: 0 10px;

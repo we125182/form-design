@@ -1,7 +1,8 @@
 <template>
   <div class="form-design">
-    <left-aside :components="components"></left-aside>
+    <left-aside></left-aside>
     <div class="content">
+      <tool-bar></tool-bar>
       <form-container :components="formItems"></form-container>
     </div>
     <right-aside></right-aside>
@@ -12,16 +13,16 @@
 import LeftAside from './LeftAside'
 import RightAside from './RightAside'
 import FormContainer from './FormContainer'
-import { components } from '@/utils'
+import ToolBar from './ToolBar'
 export default {
   components: {
     LeftAside,
     RightAside,
+    ToolBar,
     FormContainer
   },
   data() {
     return {
-      components,
       formItems: [
       ]
     }
@@ -44,7 +45,6 @@ export default {
 
   .left-aside {
     width: 250px;
-    padding: 10px;
     box-shadow: 5px 0px 5px -5px black;
   }
 
@@ -68,8 +68,7 @@ export default {
 
   .content {
     flex: 1;
-    margin: 10px;
-    border: 1px dashed #cccccc;
+    margin: 0 10px 10px;
   }
 
   .drag-container, .transition-group {
