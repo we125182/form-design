@@ -11,11 +11,15 @@ export default new Vuex.Store({
       labelPosition: 'right',
       labelWidth: '100px',
       size: 'small'
-    }
+    },
+    formItems: []
   },
   mutations: {
     setContainerProp(state, prop) {
       state.containerProp = prop
+    },
+    setFormItems(state, formItems) {
+      state.formItems = formItems
     }
   },
   actions: {
