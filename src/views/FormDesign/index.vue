@@ -10,10 +10,10 @@
 </template>
 
 <script>
-import LeftAside from './LeftAside'
-import RightAside from './RightAside'
-import FormContainer from './FormContainer'
-import ToolBar from './ToolBar'
+import LeftAside from './LeftAside/index'
+import RightAside from './RightAside/index'
+import FormContainer from './FormContainer/index'
+import ToolBar from './ToolBar/index'
 export default {
   components: {
     LeftAside,

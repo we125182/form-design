@@ -57,7 +57,6 @@ export default {
   },
   created() {
     this.$set(this.form, this.prop, this.value)
-    console.log(this.form)
   },
   methods: {
     handleCopy() {

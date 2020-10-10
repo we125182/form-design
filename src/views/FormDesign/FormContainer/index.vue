@@ -9,7 +9,7 @@
     >
       <transition-group name="fade" tag="div" class="transition-group">
         <render-component
-          v-for="(component, index) in formItems"
+          v-for="(component, index) in formatComponents"
           :key="component.prop"
           v-bind="component"
           :class="{'is-active': activeComponent.prop === component.prop}"
@@ -48,7 +48,15 @@ export default {
     }
   },
   computed: {
-    ...mapState(['containerProp'])
+    ...mapState(['containerProp']),
+    formatComponents() {
+      return this.formItems.map(item => {
+        if (item.name === 'ElDatePicker') {
+          item.prop = item.prop + item.props.type
+        }
+        return item
+      })
+    }
   },
   methods: {
     setActiveComponent(component) {

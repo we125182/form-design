@@ -35,6 +35,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped lang="scss">
+.el-button {
+  cursor: move;
+}
 </style>
