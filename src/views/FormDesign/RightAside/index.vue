@@ -24,7 +24,7 @@ export default {
 
 <style lang="scss">
 .right-aside {
-  width: 270px;
+  width: 300px;
   box-shadow: -5px 0px 5px -5px black;
   overflow: auto;
   background-color: #fff;

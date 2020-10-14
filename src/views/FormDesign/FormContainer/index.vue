@@ -8,16 +8,16 @@
       @add="handleAdd"
     >
       <transition-group name="fade" tag="div" class="transition-group">
-        <render-component
+        <drag-form-item
           v-for="(component, index) in formatComponents"
           :key="component.prop"
-          v-bind="component"
-          :class="{'is-active': activeComponent.prop === component.prop}"
+          :class="{'drag-form-item': true, 'is-active': activeComponent.prop === component.prop}"
           @click="setActiveComponent(component)"
           @copy="handleCopy(component, index)"
           @delete="handleDelete(index)"
         >
-        </render-component>
+          <render-component v-bind="component"></render-component>
+        </drag-form-item>
       </transition-group>
     </draggable>
   </el-form>
@@ -25,6 +25,7 @@
 
 <script>
 import draggable from 'vuedraggable'
+import DragFormItem from '@/components/DragFormItem'
 import RenderComponent from '@/components/RenderComponent'
 import { uniqueId } from 'lodash-es'
 import { mapState } from 'vuex'
@@ -33,7 +34,8 @@ import { EventName } from '@/utils'
 export default {
   components: {
     draggable,
-    RenderComponent
+    RenderComponent,
+    DragFormItem
   },
   props: {
     components: {
@@ -56,6 +58,14 @@ export default {
         }
         return item
       })
+    }
+  },
+  watch: {
+    formItems: {
+      handler(val) {
+        this.$store.commit('setFormItems', val)
+      },
+      deep: true
     }
   },
   methods: {
@@ -120,6 +130,52 @@ export default {
     padding: 0;
     width: 100%;
     color: #F56C6C !important;
+  }
+  .drag-form-item {
+    padding: 0 30px;
+    border: 1px dashed #ccc;
+    position: relative;
+    margin: 2px;
+    &:hover {
+      border: 1px solid #409eff;
+    }
+    &.is-active {
+      border: 1px solid #409eff;
+      outline: 2px solid #409EFF;
+      .iconfont {
+        display: initial !important;
+      }
+    }
+    .iconfont {
+      display: none;
+      position: absolute;
+      height: 25px;
+      background-color: #409EFF;
+      color: #fff;
+      font-size: 20px;
+      text-align: center;
+    }
+    .icon-move {
+      top: 0;
+      left: 0;
+      width: 25px;
+      cursor: move;
+    }
+    span.iconfont {
+      display: none;
+      bottom: 0;
+      right: 0;
+      i {
+        cursor: pointer;
+        width: 25px;
+        height: 25px;
+        text-align: center;
+        line-height: 25px;
+      }
+      i + i {
+        margin-left: 6px;
+      }
+    }
   }
 }
 </style>

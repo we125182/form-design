@@ -38,7 +38,7 @@ export default {
   padding: 0 10px 10px;
   background-color: #fff;
   .el-button {
-    width: 120px;
+    width: 48%;
     margin-bottom: 10px;
   }
   .el-button + .el-button {
@@ -49,6 +49,11 @@ export default {
   }
   .el-collapse-item__content {
     padding-bottom: 0;
+    & > div {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
   }
   .el-collapse-item__header {
     font-size: 14px;

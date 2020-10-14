@@ -41,10 +41,12 @@ export default {
 <style lang="scss">
 .form-design {
   height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
 
   .left-aside {
-    width: 250px;
+    width: 300px;
     box-shadow: 5px 0px 5px -5px black;
   }
 
