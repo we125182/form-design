@@ -35,6 +35,10 @@ export default {
   }
   .el-icon-remove-outline {
     color: #F56C6C;
+    cursor: pointer;
+  }
+  .el-icon-rank {
+    cursor: move;
   }
 }
 </style>

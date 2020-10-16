@@ -7,7 +7,11 @@
 
 <script>
 import DialogMixin from '@/mixins/DialogMixin'
+import { renderCode, renderContainerCode } from '@/utils/renderCode'
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
+import { mapState } from 'vuex'
+import prettier from 'prettier/standalone'
+import parserHtml from 'prettier/parser-html'
 
 export default {
   mixins: [DialogMixin],
@@ -16,17 +20,37 @@ export default {
       editor: null
     }
   },
+  computed: {
+    ...mapState(['containerProp', 'formItems'])
+  },
   methods: {
     initCode() {
-      if (!this.editor) {
+      const value = this.renderCode()
+      const formatValue = prettier.format(value, {
+        parser: 'vue',
+        plugins: [parserHtml]
+      })
+      if (this.editor) {
+        this.editor.setValue(formatValue)
+      } else {
         this.editor = monaco.editor.create(this.$refs.code, {
-          value: '<template></template>',
-          language: 'html'
+          language: 'html',
+          value: formatValue
         })
       }
     },
+    renderCode() {
+      console.log(this.formItems)
+      const formItems = []
+      const nestedTemplate = this.formItems.reduce((pre, formItem) => {
+        formItems.push(`${formItem.prop}: ''`)
+        pre += renderCode(formItem)
+        return pre
+      }, '')
+      const template = renderContainerCode(this.containerProp, nestedTemplate, formItems.join(',\n\t\t\t\t\t\t\t\t'))
+      return template
+    },
     save() {
-
     }
   }
 }
@@ -47,7 +71,7 @@ export default {
     box-sizing: border-box;
   }
   .margin {
-    background-color: #eeeeee !important;
+    background-color: #fbfbfb !important;
   }
 }
 </style>

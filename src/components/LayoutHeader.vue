@@ -1,6 +1,6 @@
 <template>
   <div class="layout-header">
-    头部组价
+    表单设计器
   </div>
 </template>
 
@@ -14,6 +14,7 @@ export default {
 .layout-header {
     height: 60px;
     line-height: 60px;
-    box-shadow: 0px 0px 5px 5px rgba(15, 3, 3, 0.09);
+    border-bottom: 1px solid #ebeef5;
+    padding: 0 32px;
 }
 </style>

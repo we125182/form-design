@@ -25,10 +25,10 @@ export default {
 <style lang="scss">
 .right-aside {
   width: 300px;
-  box-shadow: -5px 0px 5px -5px black;
+  border-left: 1px solid #ebeef5;
   overflow: auto;
   background-color: #fff;
-  border-top: 1px solid #EBEEF5;
+  flex-shrink: 0;
   .el-tabs__nav {
     width: 100%;
   }

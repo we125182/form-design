@@ -44,10 +44,13 @@ export default {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
+  background-color: #ffffff;
 
   .left-aside {
     width: 300px;
-    box-shadow: 5px 0px 5px -5px black;
+    border-right: 1px solid #ebeef5;
+    border-top: none;
+    flex-shrink: 0;
   }
 
   .drag-item {
@@ -71,6 +74,7 @@ export default {
   .content {
     flex: 1;
     margin: 0 10px 10px;
+    min-width: 500px;
   }
 
   .drag-container, .transition-group {

@@ -9,7 +9,7 @@
     >
       <transition-group name="fade" tag="div" class="transition-group">
         <drag-form-item
-          v-for="(component, index) in formatComponents"
+          v-for="(component, index) in formItems"
           :key="component.prop"
           :class="{'drag-form-item': true, 'is-active': activeComponent.prop === component.prop}"
           @click="setActiveComponent(component)"
